@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>鼠标键盘操作练习</title>
+<style>
+    body {
+        font: 16px sans-serif;
+        max-width: 760px;
+        margin: 32px auto
+    }
+
+    .menu {
+        display: inline-block;
+        position: relative;
+        background: #def;
+        padding: 14px
+    }
+
+    .submenu {
+        display: none;
+        position: absolute;
+        top: 42px;
+        left: 0;
+        background: #eef;
+        padding: 10px;
+        width: 210px
+    }
+
+    .menu:hover .submenu {
+        display: block
+    }
+
+    input {
+        padding: 8px
+    }
+</style>
+<h1>鼠标与键盘操作</h1>
+<div id="menu" class="menu">鼠标悬停展开<div id="submenu" class="submenu">菜单已展开：选择“课程介绍”<button id="menu-item"
+            onclick="document.querySelector('#menu-result').textContent='已选择：课程介绍'">课程介绍</button></div>
+</div>
+<p id="menu-result">尚未选择菜单项</p><label>按 Enter 提交：<input id="keyword" placeholder="输入 Selenium"></label>
+<p id="key-result">尚未提交</p>
+<script>document.querySelector('#keyword').addEventListener('keydown', e => { if (e.key === 'Enter') document.querySelector('#key-result').textContent = '已提交：' + e.target.value })</script>
+
+</html>

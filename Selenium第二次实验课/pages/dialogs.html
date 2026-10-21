@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>JavaScript 弹窗练习</title>
+<style>
+    body {
+        font: 16px sans-serif;
+        max-width: 700px;
+        margin: 32px auto
+    }
+
+    button {
+        margin: 8px;
+        padding: 8px
+    }
+
+    #feedback {
+        color: #075;
+        font-weight: bold
+    }
+</style>
+<h1>JavaScript 弹窗练习</h1>
+<p>每个按钮会依次触发浏览器原生弹窗。</p><button id="alert-btn">打开 alert</button><button id="confirm-btn">打开 confirm</button><button
+    id="prompt-btn">打开 prompt</button>
+<p id="feedback">尚无操作</p>
+<script>
+    document.querySelector('#alert-btn').onclick = () => { alert('这是 alert 提示'); document.querySelector('#feedback').textContent = 'alert 已确认' };
+    document.querySelector('#confirm-btn').onclick = () => { let yes = confirm('请选择确认或取消'); document.querySelector('#feedback').textContent = yes ? 'confirm：已确认' : 'confirm：已取消' };
+    document.querySelector('#prompt-btn').onclick = () => { let value = prompt('请输入一段文字', ''); document.querySelector('#feedback').textContent = value === null ? 'prompt：已取消' : 'prompt：' + value };</script>
+
+</html>

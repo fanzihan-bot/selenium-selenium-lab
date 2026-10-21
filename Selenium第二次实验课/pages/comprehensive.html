@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>课程报名综合练习</title>
+<style>
+    body {
+        font: 16px sans-serif;
+        max-width: 760px;
+        margin: 32px auto
+    }
+
+    label {
+        display: block;
+        margin: 12px 0
+    }
+
+    input,
+    select {
+        padding: 7px
+    }
+
+    #result {
+        padding: 12px;
+        background: #f2f7f2;
+        min-height: 24px
+    }
+</style>
+<h1>课程报名综合练习</h1>
+<p>填写姓名与课程，点击提交后先确认弹窗；取消不会提交。</p><label>姓名（必填）：<input id="student-name"></label><label>课程：<select id="course">
+        <option value="">请选择</option>
+        <option value="selenium">Selenium 自动化</option>
+        <option value="python">Python 入门</option>
+    </select></label><button id="submit">提交报名</button>
+<p id="result" aria-live="polite">尚未提交</p>
+<script>document.querySelector('#submit').onclick = () => { let n = document.querySelector('#student-name').value.trim(), c = document.querySelector('#course').value; if (!n || !c) { document.querySelector('#result').textContent = '提交失败：姓名和课程都必填'; return } if (confirm('确认提交报名？')) { document.querySelector('#result').textContent = '报名成功：' + n + '｜' + c } else { document.querySelector('#result').textContent = '已取消提交' } };</script>
+
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>断言综合练习</title>
+  <style>
+    body { font-family: sans-serif; max-width: 640px; margin: 36px auto; line-height: 1.7; }
+    label { display: block; margin: 12px 0; }
+    input { padding: 8px; }
+    button { padding: 8px 16px; }
+    #message { margin-top: 18px; padding: 12px; background: #eef7ee; color: #174d20; }
+  </style>
+</head>
+<body>
+  <h1>本地登录结果验证</h1>
+  <p>页面只用于 Selenium 课堂练习，不连接服务器。</p>
+  <label>用户名：<input id="username" type="text" value="" placeholder="请输入用户名"></label>
+  <button id="login" type="button">登录并显示提示</button>
+  <p id="message" aria-live="polite">尚未登录</p>
+  <script>
+    document.querySelector('#login').addEventListener('click', function () {
+      const username = document.querySelector('#username').value.trim();
+      const message = document.querySelector('#message');
+      message.textContent = username
+        ? '登录成功！用户：' + username
+        : '用户名不能为空！';
+    });
+  </script>
+</body>
+</html>

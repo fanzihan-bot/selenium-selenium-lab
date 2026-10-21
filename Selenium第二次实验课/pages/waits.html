@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>显式等待练习</title>
+<style>
+    body {
+        font: 16px sans-serif;
+        max-width: 760px;
+        margin: 32px auto
+    }
+
+    section {
+        padding: 14px;
+        border: 1px solid #bbb;
+        margin: 12px 0
+    }
+
+    .result {
+        color: #075
+    }
+</style>
+<h1>显式等待练习</h1>
+<section>
+    <h2>延迟插入</h2><button id="insert-start">开始插入</button>
+    <div id="insert-area"></div>
+    <p>状态：<span id="insert-status">尚未开始</span></p>
+</section>
+<section>
+    <h2>延迟显示</h2><button id="show-start">开始显示</button>
+    <div id="hidden-result" hidden>延迟显示完成</div>
+    <p>状态：<span id="show-status">尚未开始</span></p>
+</section>
+<section>
+    <h2>延迟启用</h2><button id="enable-start">开始启用</button><button id="delayed-button" disabled>延迟启用按钮</button>
+    <p>状态：<span id="enable-status">尚未开始</span></p>
+    <p id="click-result"></p>
+</section>
+<script>
+    document.querySelector('#insert-start').onclick = () => { document.querySelector('#insert-status').textContent = '处理中'; setTimeout(() => { let e = document.createElement('p'); e.id = 'inserted'; e.textContent = '延迟插入完成'; document.querySelector('#insert-area').append(e); document.querySelector('#insert-status').textContent = '已完成' }, 3000) };
+    document.querySelector('#show-start').onclick = () => { document.querySelector('#show-status').textContent = '处理中'; setTimeout(() => { document.querySelector('#hidden-result').hidden = false; document.querySelector('#show-status').textContent = '已完成' }, 3000) };
+    document.querySelector('#enable-start').onclick = () => { document.querySelector('#enable-status').textContent = '处理中'; setTimeout(() => { document.querySelector('#delayed-button').disabled = false; document.querySelector('#enable-status').textContent = '已启用' }, 3000) };
+    document.querySelector('#delayed-button').onclick = () => document.querySelector('#click-result').textContent = '延迟按钮已点击';</script>
+
+</html>
